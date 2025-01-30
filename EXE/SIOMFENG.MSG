@@ -1,0 +1,22 @@
+LLGR Good Star  by ISAC
+free
+free  
+free  
+Warnings  
+Operation impossible   : machine in cycle 
+free  
+free  
+NO
+ [F1] = LIST  
+ JOG 
+free  
+MACHINE NOT IN CYCLE 
+free  
+free
+free
+free
+Press ESC to  rinunciare
+free
+free
+free
+free

@@ -1,0 +1,22 @@
+LLGR Good Star  by ISAC
+libero
+libero
+libero
+Attenzioni
+Operazione impossibile : macchina in ciclo
+libero
+libero
+NO
+ [F1] = LISTA 
+ JOG 
+libero
+MACCHINA NON IN CICLO
+libero
+libero
+libero
+libero
+Premi ESC per rinunciare
+libero
+libero
+libero
+libero

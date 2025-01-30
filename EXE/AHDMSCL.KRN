@@ -1,0 +1,791 @@
+ga ripari 1: encoder KO o inversione moto */
+#define	AL_FUGR2  69	/* Fuga ripari 2: encoder KO o inversione moto */
+#define	AL_FUGSP  70	/* Fuga spazzolone: encoder KO o inversione moto */
+#define	AL_FUGLT  71	/* Fuga lettore: encoder KO o inversione moto */
+#define	AT_MISP	  72	/* Misura spessore con Sonar KO: si usa vecchio */
+			/* spessore per la nuova lastra (ATTENZIONE 	*/
+			/* a collisioni se lo spessore Š variato) 	*/
+#define	AT_FERM2  73	/* Ciclo sospeso o LETTORE NON POSIZIONATO */
+#define	AL_MAND	  74	/* Mandrino in moto ma non acceso da controllo */
+#define	AT_MAXBA  75	/* Battute del ponte eccessive, velocit… */
+			/* ridotta automaticamente 		 */
+
+
+#define	AL_TER2	  80	/* Termico motore mandrini */
+
+
+
+
+/************************************************************************/
+/*	Codici ALLARMI generati da POSAY, POSAX, POSAW			*/
+/*									*/
+/************************************************************************/
+
+#define	ALL_AX	 100	/* Asse non pronto		*/
+#define ALL_SET	 111 	/* Micro di zero asse non trovato */
+#define	ALL_FCDX 112	/* Finecorsa DX			*/
+#define	ALL_FCSX 113	/* Finecorsa SX			*/
+#define	ALL_ECHO 114	/* Errore di echo sulle T	*/
+#define ALL_FCHW 115    /* Micro finecorsa intervenuti in AUTO */
+#define ALL_FER 116     /* Asse Nastro fermo		 */
+#define ALL_MCR 117     /* Quota Ponte inaffidabile causa  */
+			/* errore trasduttore */
+#define ALL_SGL	118	/* Superata soglia massima d'errore */
+			/* nel posizionamento PONTE */
+#define AT_NST	150	/* Rimessa Ponte da eseguire: premere START */
+#define ALL_VEL	 120	/* Errore su nastro, le cause possibili:*/
+			/* sono dovute ad Encoder da tarare o  */
+			/* a perdite di impulsi	*/
+#define ALL_QS  130	/* Quota Ponte maggiore dei finecorsa */
+
+
+
+/************************************************************************/
+/*	Codici MESSAGGI generati da PLC					*/
+/*									*/
+/************************************************************************/
+
+#define MS_FEP	200	/* Uscita da emergenza consentita  */
+			/* in senso opposto */
+#define MS_AFEP	201	/* Uscita da eme. consentita in manuale	*/
+#define MS_PMAN 202	/* Passaggio MANUALE/AUTOMATICO consentito */
+			/* solo ad assi fermi			*/
+#define MS_STA 203	/* START consentito solo in AUTOMATICO	*/
+#define MS_MAV 204	/* Comandi di movimento consentiti 	*/
+			/* solo in MANUALE			*/
+#define MS_SET 205	/* SET asse PONTE da eseguire in MANUALE	*/
+#define MS_BID 206	/* Direzione non consentita			*/
+#define MS_FEED 207	/* Velocit… 0 su un asse in AUTOMATICO		*/
+#define MS_WMAND 208	/* Attendere mandrini accesi			*/
+#define MS_MQUADRI 209  /* Lastra troppo lunga per calcolo      */
+                        /* metri quadri         */
+#define	MS_NOSET 210	/* Start non accettato: ripari o spazzolone in  */
+			/* automatico con SET non fatto			*/
+
+
+/************************************************************************/
+/*	Codici allarmi /attenzioni generati da RIPMA				*/
+/*									*/
+/************************************************************************/
+
+#define	ALL_RIP1	400	/* Sfasamento tra stato del tappeto */
+			       /*  e stato dei micro memorizzati */
+#define	ALL_RIP2	401	/* Superato max numero di quote */
+				/*memorizzate */
+#define	ALL_RINV	402	/* Direzione del nastro non consentita*/
+                                /*in AUTOMATICO */
+#define	AL_RIQUO	403	/* Quota SX risulta maggiore della Quota DX:*/
+                                /*controllare nella finestra "Teste" */
+				/*i parametri relativi ad Impegno teste */
+				/* e Limitazione ponte */
+
+#define	AL_RIP3		404	/* Sfasamento  del tappeto in Manuale */
+#define	AL_RIP4		405	/* Sfasamento  del tappeto in Automatico */
+                                /* (inioese) */
+#define	AL_RIP5		406	/* Sfasamento  del tappeto in Manuale */
+                                /* (ciclico ) */
+#define	AL_RIP6		407	/* Sfasamento  del tappeto in Automatico */
+                                /* (ciclico ) */
+#define	AL_SPESSO	408	/* Spessore non rilevato entro lo spazio */
+				/* stabilito :portare la lastra sotto  */
+				/* la testa 1 e cancellarla */
+#define	AL_LASMIS	409	/* Lunghezza lastra insufficiente o  */
+				/* misura Spessore non rilevata */
+#define	AL_COLLISIO 	410	/* TESTA 1 in collisione sul tappeto */
+#define	AL_COL2	    	411	/* TESTA 2 in collisione sul tappeto */
+#define	AL_COL3	    	412	/* TESTA 3 in collisione sul tappeto */
+#define	AL_COL4	  	413	/* TESTA 4 in collisione sul tappeto */
+#define	AL_COL5	  	414	/* TESTA 5 in collisione sul tappeto */
+#define	AL_COL6	  	415	/* TESTA 6 in collisione sul tappeto */
+#define	AL_COL7	  	416	/* TESTA 7 in collisione sul tappeto */
+#define	AL_COL8	  	417	/* TESTA 8 in collisione sul tappeto */
+#define	AL_COL9	  	418	/* TESTA 9 in collisione sul tappeto */
+#define	AL_COL10  	419	/* TESTA 10 in collisione sul tappeto */
+#define	AL_COL11  	420	/* TESTA 11 in collisione sul tappeto */
+#define	AL_COL12  	421	/* TESTA 12 in collisione sul tappeto */
+#define	AL_COL13  	422	/* TESTA 13 in collisione sul tappeto */
+#define	AL_COL14  	423	/* TESTA 14 in collisione sul tappeto */
+#define	AL_COL15  	424	/* TESTA 15 in collisione sul tappeto */
+#define	AL_COL16  	425	/* TESTA 16 in collisione sul tappeto */
+#define	AL_COL17  	426	/* TESTA 17 in collisione sul tappeto */
+#define	AL_COL18  	427	/* TESTA 18 in collisione sul tappeto */
+#define	AL_COL19  	428	/* TESTA 19 in collisione sul tappeto */
+#define	AL_COL20  	429	/* TESTA 20 in collisione sul tappeto */
+#define	AL_COL21  	430	/* TESTA 21 in collisione sul tappeto */
+#define	AL_COL22  	431	/* TESTA 22 in collisione sul tappeto */
+#define	AL_COL23  	432	/* TESTA 23 in collisione sul tappeto */
+#define	AL_COL24  	433	/* TESTA 24 in collisione sul tappeto */
+
+#define	AL_NOSPES	440	/* Spessore nullo:possibile collisione  */
+				/* sul tappeto */
+
+/* attenzioni */
+#define	ATT_RIP1	4000	/* strobe != ack. : non viene inoltrata*/
+				/* registrazione dei punti notevoli(quote)*/
+				/* su file */
+#define	ATT_RIP2	4001	/* Registrazione dei p.ti notevoli in corso*/
+				/* sovrascrivo i nuovi punti notevoli	 */
+#define ALL_BAU		4002	/* Ausiliari spenti con macchina in ciclo */
+
+#define AT_NOTESBA	4003	/* Testa 1 non scesa entro il tempo	*/
+				/* stabilito od effettuato cambio abrasivo*/ 
+				/* senza passare da procedura		*/
+#define AT_NOTES2	4004	/* Testa 2 non scesa entro il tempo 	*/
+				/* stabilito od effettuato cambio abrasivo */
+				/* senza passare da procedura */
+#define AT_NOTES3	4005	/* Testa 3 non scesa entro il tempo */
+				/*stabilito od effettuato cambio abrasivo */
+				/*senza passare da procedura */
+#define AT_NOTES4	4006	/* Testa 4 non scesa entro il tempo 	*/
+				/*stabilito od effettuato cambio abrasivo   */
+				/*senza passare da procedura */
+#define AT_NOTES5	4007	/* Testa 5 non scesa entro il tempo  */
+				/*stabilito od effettato cambio abrasivo */
+				/*senza passare da procedura */
+#define AT_NOTES6	4008	/* Testa 6 non scesa entro il tempo  */
+				/*stabilito od effettuato cambio abrasivo */
+				/*senza passare da procedura */
+#define AT_NOTES7	4009	/* Testa 7 non scesa entro il tempo  */
+				/*stabilito od effettuato cambio abrasivo */
+				/*stabilito senza passare da procedura */
+#define AT_NOTES8	4010	/* Testa 8 non scesa entro il tempo */
+				/*stabilito od effettuato cambio abrasivo */
+				/*senza passare da procedura */
+#define AT_NOTES9	4011	/* Testa 9 non scesa entro il tempo */
+				/*stabilito od effettuato cambio abrasivo */
+				/*senza passare da procedura */
+#define AT_NOTES10	4012	/* Testa 10 non scesa entro il tempo  */
+				/*stabilito od effettuato cambio abrasivo */
+				/*senza passare da procedura */
+#define AT_NOTES11	4013	/* Testa 11 non scesa entro il tempo  */
+				/*stabilito od effettuato cambio abrasivo*/
+				/*senza passare da procedura */
+#define AT_NOTES12	4014	/* Testa 12 non scesa entro il tempo */
+				/*stabilito od effettuato cambio abrasivo */
+				/*senza passare da procedura */
+#define AT_NOTES13	4015	/* Testa 13 non scesa entro il tempo  */
+				/*stabilito od effettuato cambio abrasivo  */
+				/*senza passare da procedura */
+#define AT_NOTES14	4016	/* Testa 14 non scesa entro il tempo  */
+				/*stabilito od effettuato cambio abrasivo  */
+				/*senza passare da procedura */
+#define AT_NOTES15	4017	/* Testa 15 non scesa entro il tempo  */
+				/*stabilito od effettuato cambio abrasivo  */
+				/*senza passare da procedura */
+#define AT_NOTES16	4018	/* Testa 16 non scesa entro il tempo  */
+				/*stabilito od effettuato cambio abrasivo */
+				/*senza passare da procedura */
+#define AT_NOTES17	4019	/* Testa 17 non scesa entro il tempo  */
+				/*stabilito od effettuato cambio abrasivo  */
+				/*senza passare da procedura */
+#define AT_NOTES18	4020	/* Testa 18 non scesa entro il tempo  */
+				/*stabilito od effettuato cambio abrasivo  */
+				/*senza passare da procedura */
+#define AT_NOTES19	4021	/* Testa 19 non scesa entro il tempo  */
+				/*stabilito od effettuato cambio abrasivo  */
+				/*senza passare da procedura */
+#define AT_NOTES20	4022	/* Testa 20 non scesa entro il tempo  */
+				/*stabilito od effettuato cambio abrasivo  */
+				/*senza passare da procedura */
+
+#define ALL_BVV		4023	/* Allrme Nastro con macchina in ciclo */
+
+/************************************************************************/
+/*	Codici allarmi generati da IOMA					*/
+/*									*/
+/*									*/
+/*    	CODICI DA 1000 A 1799						*/
+/************************************************************************/
+#define	AL_VIS0 1000	/* Disallineamento STROBE/ACKNOW tra PLC*/
+			/* e IOMA				*/
+#define	AL_VIS1 1001	/* Il PLC non ha dato comando eseguito 	*/
+			/* entro il tempo stabilito		*/
+#define	AL_VIS2 1002	/* Numero testa inesistente		*/
+#define	AL_VIS3 1003	/* Non Š possibile cambiare i dati di 	*/
+			/* macchina con la macchina in esecuzione*/
+#define AL_VIS4 1004	/* Valore non ammesso...................*/
+#define AL_VIS5 1005	/* Superato numero massimo teste  	*/
+#define AL_VIS6 1006	/* Non trovato file di tarature TARAT.TAB*/
+			/* il file deve essere presente in C:\EXE*/
+#define AL_VIS7 1007	/* Errore in lettura del file TARAT.TAB	*/
+#define AL_VIS8 1008	/* Procedura inizializ.ne assi gi… in corso*/
+#define AL_NIN	1009	/* Inizializzazione assi non consentita */
+			/* con lastre presenti sul tappeto 	 */
+#define AL_NRS	1010	/* Modifica risoluzione tappeto non 	*/
+			/* possibile con lastre presenti su tappeto*/
+#define AL_NDL	1011	/* Non Š possibile eliminare lastre con la */
+			/* macchina in  esecuzione		  */
+#define AL_DKP	1012	/* Fattore scala troppo piccolo. Deve 	*/
+			/* essere maggiore uguale ad 1	  	*/
+#define	AL_NAT  1013	/* Non Š possibile effettuare autotest 	*/
+			/* con la macchina in esecuzione       	*/
+#define AL_MAT	1014	/* Autotest non consentito con lastre  	*/
+			/* presente sul tappeto		       	*/
+#define AL_MEM	1015	/* Autotest non consentito con 		*/
+			/* memorizzazione attiva					*/
+#define AL_MIC	1016	/* Autotest non consentito con mashere 		*/
+			/* microrilevatori attive		       	*/
+#define AL_NME	1017	/* Memorizzazione gi… attiva con operazione	*/
+			/* di autotest					*/
+#define AL_NME	1017	/* Memorizzazione gi… attiva con operazione	*/
+			/* di autotest					*/
+#define AL_RDY	1018	/* Drive non pronto				*/
+#define AL_NFL	1019	/* Nessun file trovato				*/
+#define	AL_MAX	1020	/* Superato valore (MAX anticipo/ritardo)	*/
+			/* stabilito nelle tarature di macchina 	*/
+#define	AL_CHK	1021	/* Operazione non possibile senza il		*/
+	   		/* dischetto CHIAVE				*/
+#define	AL_MAX1	1022	/* Superato con (Impegno teste+Allineamento)	*/
+			/* il valore (Massimo anticipo/ritardo) 	*/
+			/* stabilito nelle tarature di macchina 	*/
+#define AL_NRSM	10023	/* Non consentita variazione parametro rsm	*/
+			/* con lastre  presenti sul tappeto 		*/
+#define AL_LIPO 1030	/* Variazione modalit… limitazione corsa 	*/
+			/* consentita solo se macchina in STOP 		*/
+#define AL_NOISE 1031	/* CNC in ALT Eseguire OFF/ON  macchina 	*/
+			/* Rilevate cadute di tensione elevate		*/
+#define AL_ASS2	1032	/* Asse Nastro Ingresso non presente perch‚ 	*/
+			/* macchina non gemella Ingresso		*/
+#define AL_COMME 1033	/* ATTENZIONE :Reset dei dati di PRODUZIONE 	*/
+			/* ed USURA abrasivi. 				*/
+			/* [ENTER] = CONFERMA				*/
+			/* [ESCAPE] = ANNULLA				*/
+#define	AL_STAMPA 1034	/* Non Š possibile effettuare l'operazione	*/
+			/* con gli assi in movimento			*/
+#define	AL_STACO 1035	/* Nessuna Commessa da stampare 		*/
+#define	AL_OSCI	1036	/* Operazione non possibile in modalita`	*/
+	   		/* Oscillazione Ponte				*/
+#define	AL_DELTAP 1037	/* ATTENZIONE:la memoria del tappeto viene 	*/
+			/* totalmente perduta! 	*/
+			/* [ENTER] = CONFERMA				*/
+			/* [ESCAPE] = ANNULLA				*/
+#define	AL_DELLAS 1038  /* [ESC]= ANNULLLA  [ENTER]=CONFERMA 	*/
+			/* ATTENZIONE:viene perduta la memoria 	*/
+			/* della lastra sotto la  */
+#define	AL_VALID 1039  /* Valore non consentito */
+#define	AL_WRIFLO 1040  /* Floppy protetto in scrittura */
+#define	AL_NOFTAR 1041  /* File di taratura non trovato */
+#define	AL_NOWTAR 1042  /* Errore in scrittura su File  */
+			/* TARAT.TAB */
+#define	AL_NOWTAR1 1043  /* Errore in scrittura su File  */
+			/* TARCNC.TAB */
+
+#define AL_STAPAR 1044  /* Operazione di stampa KO: controllare  */
+                        /* cavo o stampante in uso */
+#define AL_STAFLO 1045  /* Operazione di stampa KO: controllare  */
+                        /* dischetto */
+#define	AT_LUA1 1046  /* Il valore Lu di a1 non puo` essere */
+			/* inferiore a: */
+#define	AT_LAA1 1047  /* Il valore La di a1 non puo` essere */
+			/* inferiore a: */
+#define	AT_LUA2 1048  /* Il valore Lu di a2 non puo` essere */
+			/* inferiore a: */
+#define	AT_LAA2 1049  /* Il valore La di a2 non puo` essere */
+			/* inferiore a: */
+#define	AT_LUA3 1050  /* Il valore Lu di a3 non puo` essere */
+			/* inferiore a: */
+#define	AT_LAA3 1051  /* Il valore La di a3 non puo` essere */
+			/* inferiore a: */
+#define	AT_LUA4 1052  /* Il valore Lu di a4 non puo` essere */
+			/* inferiore a: */
+#define	AT_LAA4 1053  /* Il valore La di a4 non puo` essere */
+			/* inferiore a: */
+#define	AT_SCANTO 1054  /* [ESC]=Abort [ENTER]=Prosegue */
+			/* Viene scantonata la lastra di lungh.: */
+#define	AT_NOA1 1055  /* NON effettuato scantonamento di A1 */
+#define	AT_NOA2 1056  /* NON effettuato scantonamento di A2 */
+#define	AT_NOA3 1057  /* NON effettuato scantonamento di A3 */
+#define	AT_NOA4 1058  /* NON effettuato scantonamento di A4 */
+#define	AT_NOSCAN 1059  /* NON trovato materiale al centro della testa */
+#define	AT_SPEFI 1060  /* [ESC]=Abort [ENTER]=Prosegue */
+			/* Attenzione tutte le lastre devono */
+			/* essere di spessore fisso: */
+#define	AT_NOSPEFI 1061 /* [ESC]=Abort [ENTER]=Prosegue */
+			/* Misura spessore abilitata */
+#define	AL_NOFEVE 1062  /* File eventi (eventi.lst) non trovato 	*/
+#define	AL_NOWEVE 1063  /* Errore in scrittura su File  a:\eventi.lst	*/
+#define	AL_NOWREP 1064  /* Errore in scrittura su File  */
+			/* REPORT.TAB */
+
+#define	AL_CARTAR 1065  /* SPENGERE E RIACCENDERE per attivare 	*/
+			/* le tarature caricate adesso.		*/	
+			/* La memoria verr… resettata		*/
+
+
+#define AL_ULTIMA 1100  /* Ultimo menu   */
+
+/************************************************************************/
+/*	Testi di help vari in particolare:				*/
+/*		- Informazioni stato segnali di ingresso 		*/
+/*									*/
+/*    	CODICI DA 17000 A 17999						*/
+/************************************************************************/
+#define AT_VIS0 17000	/* Premere ESC per abort ENTER per conferma	*/
+			/* gli assi verranno reinizializzati		*/
+#define	AT_VIS1 17001	/* STATO ingressi   ======			*/
+#define AT_VIS2 17002	/* Premere ESC per abort ENTER per conferma	*/
+			/* gli assi verranno reinizializzati		*/
+#define AT_VIS3 17003	/* Premere ESC per abort ENTER per conferma	*/
+			/* Attenzione la memoria del tappeto viene 	*/
+			/* totalmente perduta, ed anche tutti gli 	*/
+			/* altri dati retentivi				*/	
+#define AT_MEM  17004	/* Memorizzazione punti su file: .....		*/
+			/* Se vuoi attivare premi [ENTER ]		*/
+			/* altrimenti [ESCAPE]				*/
+
+#define	AT_INPUT 17005	/* Descrizione ingressi */
+/* R0.00  NC Pressostato aria OK */
+/* R0.01  NC Pressostato acqua OK */
+/* R0.02  NA Hold nastro da esterno	 */
+/* R0.03  NC /Finecorsa DX ponte	 */
+/* R0.04  NC /Finecorsa SX ponte	 */
+/* R0.05  NA Fine extracorsa Ponte 	*/
+/* R0.06  NA Serie sicurezze antintrusione */
+/* R0.07  NC Driver Ponte OK		*/
+/* R0.08  NC Driver nastro OK		*/
+/* R0.09  NA Ausiliari inseriti      	*/
+/* R0.10  NA Termici spazzola (serie)     	*/
+/* R0.11  NA Abrasivo OK esterno    	*/
+/* R0.12  NA Serie Termici motori	*/
+/* R0.13  NA Serie fine abrasivi		*/
+/* R0.14  NA Micro rivelatore 1	*/
+/* R0.15  NA Micro rivelatore 2	*/
+/* . */
+/* R1.00  NA Micro rivelatore 3	*/
+/* R1.01  NA Micro rivelatore 4	*/
+/* R1.02  NA Micro rivelatore 5	*/
+/* R1.03  NA Micro rivelatore 6	*/
+/* R1.04  NA Micro rivelatore 7	*/
+/* R1.05  NA Micro rivelatore 8	*/
+/* R1.06  NA Micro rivelatore 9	*/
+/* R1.07  NA Micro rivelatore 10 */
+/* R1.08  NA Micro rivelatore 11 */
+/* R1.09  NA Micro rivelatore 12 */
+/* R1.10  NA Micro rivelatore 13 */
+/* R1.11  NA Micro rivelatore 14 */
+/* R1.12  NA Micro rivelatore 15 */
+/* R1.13  NA Micro rivelatore 16 */
+/* R1.14  NA Micro rivelatore 17 */
+/* R1.15  NA Micro rivelatore 18 */
+/* . */
+/* R2.00  NA Micro rivelatore 19 */
+/* R2.01  NA Micro rivelatore 20 */
+/* R2.02  NA Micro rivelatore 21 */
+/* R2.03  NA Micro rivelatore 22 */
+/* R2.04  NA Micro rivelatore 23 */
+/* R2.05  NA Micro rivelatore 24 */
+/* R2.06  NA Micro rivelatore 25 */
+/* R2.07  NA Micro rivelatore 26 */
+/* R2.08  NA Micro rivelatore 27 */
+/* R2.09  NA Micro rivelatore 28 */
+/* R2.10  NA Micro rivelatore 29 */
+/* R2.11  NA Micro rivelatore 30 */
+/* ... */
+/* R3.00  NA Micro rivelatore 31 */
+/* R3.01  NA Micro rivelatore 32 */
+/* R3.02  NA Micro rivelatore 33 */
+/* R3.03  NA Micro rivelatore 34 */
+/* R3.04  NA Micro rivelatore 35 */
+/* R3.05  NA Micro rivelatore 36 */
+/* R3.06  NA Micro rivelatore 37 */
+/* R3.07  NA Micro rivelatore 38 */
+/* R3.08  NA Micro rivelatore 39 */
+/* R3.09  NA Micro rivelatore 40 */
+/* R3.10  NA Micro rivelatore 41 */
+/* R3.11  NA Micro rivelatore 42 */
+/* R3.12  NA Fine corsa abrasivo testa 1 */
+/* R3.13  NA Fine corsa abrasivo testa 2 */
+/* R3.14  NA Fine corsa abrasivo testa 3 */
+/* R3.15  NA Fine corsa abrasivo testa 4 */
+/* . */
+/* R4.00  NA Fine corsa abrasivo testa 5 */
+/* R4.01  NA Fine corsa abrasivo testa 6 */
+/* R4.02  NA Fine corsa abrasivo testa 7 */
+/* R4.03  NA Fine corsa abrasivo testa 8 */
+/* R4.04  NA Fine corsa abrasivo testa 9 */
+/* R4.05  NA Fine corsa abrasivo testa 10 */
+/* R4.06  NA Fine corsa abrasivo testa 11 */
+/* R4.07  NA Fine corsa abrasivo testa 12 */
+/* R4.08  NA Fine corsa abrasivo testa 13 */
+/* R4.09  NA Fine corsa abrasivo testa 14 */
+/* R4.10  NA Fine corsa abrasivo testa 15 */
+/* R4.11  NA Fine corsa abrasivo testa 16 */
+/* R4.12  NA Fine corsa abrasivo testa 17 */
+/* R4.13  NA Fine corsa abrasivo testa 18 */
+/* R4.14  */
+/* R4.15  */
+/* . */
+/* R5.10  Micro ingrassaggio   */  
+/* R5.11  Micro lubrificazione */  
+
+#define AT_OUTPUT 17006    /*  Descrizione Uscite  */
+/* T0.00  Ponte avanti		 	*/
+/* T0.01  Ponte indietro		 	*/
+/* T0.02  Abilita movimento avanti Nastro	*/
+/* T0.03  CNC acceso		      	*/
+/* T0.04  Lampeggiatore		 	*/
+/* T0.05  Contatore garanzia esterno	*/
+/* T0.06  Elettrovalvola discesa Testa 1      */
+/* T0.07  Elettrovalvola Clamp salita Testa 1 */
+/* T0.08  Elettrovalvola discesa Testa 2      */
+/* T0.09  Elettrovalvola Clamp salita Testa 2 */
+/* T0.10  Elettrovalvola discesa Testa 3      */
+/* T0.11  Elettrovalvola Clamp salita Testa 3 */
+/* T0.12  Elettrovalvola discesa Testa 4      */
+/* T0.13  Elettrovalvola Clamp salita Testa 4 */
+/* T0.14  Elettrovalvola discesa Testa 5      */
+/* T0.15  Elettrovalvola Clamp salita Testa 5 */
+/* . */
+/* T1.00  Elettrovalvola discesa Testa 6      */
+/* T1.01  Elettrovalvola Clamp salita Testa 6 */
+/* T1.02  Elettrovalvola discesa Testa 7      */
+/* T1.03  Elettrovalvola Clamp salita Testa 7 */
+/* T1.04  Elettrovalvola discesa Testa 8      */
+/* T1.05  Elettrovalvola Clamp salita Testa 8 */
+/* T1.06  Elettrovalvola discesa Testa 9      */
+/* T1.07  Elettrovalvola Clamp salita Testa 9 */
+/* T1.08  Elettrovalvola discesa Testa 10      */
+/* T1.09  Elettrovalvola Clamp salita Testa 10 */
+/* T1.10  Elettrovalvola discesa Testa 11      */
+/* T1.11  Elettrovalvola Clamp salita Testa 11 */
+/* T1.12  Elettrovalvola discesa Testa 12      */
+/* T1.13  Elettrovalvola Clamp salita Testa 12 */
+/* T1.14  Elettrovalvola discesa Testa 13      */
+/* T1.15  Elettrovalvola Clamp salita Testa 13 */
+/* . */
+/* T2.00  Elettrovalvola discesa Testa 14      */
+/* T2.01  Elettrovalvola Clamp salita Testa 14 */
+/* T2.02  Elettrovalvola discesa Testa 15      */
+/* T2.03  Elettrovalvola Clamp salita Testa 15 */
+/* T2.04  Elettrovalvola discesa Testa 16      */
+/* T2.05  Elettrovalvola Clamp salita Testa 16 */
+/* T2.06  Elettrovalvola discesa Testa 17      */
+/* T2.07  Elettrovalvola Clamp salita Testa 17 */
+/* T2.08  Elettrovalvola discesa Testa 18      */
+/* T2.09  Elettrovalvola Clamp salita Testa 18 */
+/* T2.10  Rotazione Mandrino 1 */
+/* T2.11  Rotazione Mandrino 2 */
+/* T2.12  Rotazione Mandrino 3 */
+/* T2.13  Rotazione Mandrino 4 */
+/* T2.14  Rotazione Mandrino 5 */
+/* T2.15  Rotazione Mandrino 6 */
+/* . */
+/* T3.00  Rotazione Mandrino 7 */
+/* T3.01  Rotazione Mandrino 8 */
+/* T3.02  Rotazione Mandrino 9  */ 
+/* T3.03  Rotazione Mandrino 10 */
+/* T3.04  Rotazione Mandrino 11 */
+/* T3.05  Rotazione Mandrino 12 */
+/* T3.06  Rotazione Mandrino 13 */
+/* T3.07  Rotazione Mandrino 14 */
+/* T3.08  Rotazione Mandrino 15 */
+/* T3.09  Rotazione Mandrino 16 */
+/* T3.10  Rotazione Mandrino 17 */
+/* T3.11  Rotazione Mandrino 18 */
+/* T3.12  Sirena	  	*/
+/* T3.13  Ingrassaggio	*/
+/* T3.14  Lubrificazione 	*/
+/* T3.15  Sfrenatura Ponte	*/
+/* . */
+
+#define	AT_MICRO 17007	/* Descrizione ingressi Microrilevatori	*/
+/* R3.00  NA Microrilevatore     1 	*/
+/* R3.01  		"	 2	*/
+/* R3.02  		"	 3	*/
+/* R3.03  		"	 4	*/
+/* R3.04  		"	 5	*/
+/* R3.05  		"	 6	*/
+/* R3.06  		"	 7	*/
+/* R3.07  		"	 8	*/
+/* R3.08  		"	 9	*/
+/* R3.09  		"	 13	*/
+/* R3.10  		"	 11	*/
+/* R3.11  		"	 12	*/
+/* R3.12  		"	 13	*/
+/* R3.13  		"	 14	*/
+/* R3.14  		"	 15	*/
+/* R3.15  		"	 16	*/
+/* . */
+/* R4.00  NA Microrilevatore     17	*/
+/* R4.01  		"	 18	*/
+/* R4.02  		"	 19	*/
+/* R4.03  		"	 20	*/
+/* R4.04  		"	 21	*/
+/* R4.05  		"	 22	*/
+/* R4.06  		"	 23	*/
+/* R4.07  		"	 23	*/
+/* R4.08  		"	 25	*/
+/* R4.09  		"	 26	*/
+/* R4.10  		"	 27	*/
+/* R4.11  		"	 28	*/
+/* R4.12  		"	 29	*/
+/* R4.13  		"	 30	*/
+/* R4.14  		"	 31	*/
+/* R4.15  		"	 32	*/
+/* ... */
+/* R5.00  NA Microrilevatore     33	*/
+/* R5.01  		"	 34	*/
+/* R5.02  		"	 35	*/
+/* R5.03  		"	 36	*/
+/* R5.04  		"	 37	*/
+/* R5.05  		"	 38	*/
+/* R5.06  		"	 39	*/
+/* R5.07  		"	 40	*/
+/* R5.08  		"	 41	*/
+/* R5.09  		"	 42	*/
+/* R5.10 Fine corsa abrasivi testa   17	*/
+/* R5.11 		"	"    18	*/
+/* . */
+
+#define AT_GIA  17010 	/* MFile gi… esistente :			*/
+
+			/* Se vuoi sovrascrivere  premi [ENTER]		*/
+			/* altrimenti [ESCAPE]				*/
+#define	AT_NOP	17011	/* Errore in open del FILE			*/
+
+
+
+
+/************************************************************************/
+/*	Codici MESSAGGI generati dal CONVERTITORE		      	*/
+/*	(scritti in MESSAGE )								*/
+/*    	CODICI DA 18000 A 18100						*/
+/************************************************************************/
+#define	CONV_1	18000	/* File da convertire non trovato		*/
+#define	CONV_2	18001	/* Memoria insufficiente per la conversione	*/
+#define	CONV_3	18002	/* Errore di sistema in apertura  file		*/
+#define	AT_CRS	18003	/* Conversione in corso				*/
+#define AT_NTP	18004	/* Esaminati tappeti N.: */
+#define AT_ACV	18005	/* Conversione abortita				*/
+#define AT_NCV	18006	/* File non convertibile	                */
+#define AT_AUT  18007	/* Autotest: .....              		*/
+			/* Se vuoi attivare premi [ENTER ]		*/
+			/* altrimenti [ESCAPE]				*/
+#define	AT_NNC	18008	/* Operazione no possibile			*/
+			/* con la macchina in esecuzione		*/
+#define	AT_CREC	18009	/* Errore in creazione files			*/
+
+/************************************************************************/
+
+#define AL_NFIL 32001	/* Il file specificato non esiste		*/
+#define AL_NMEM	32017	/* Memoria insufficiente			*/
+#define AL_ETAR 32023	/* Errore in lettura del file TARCNC.TAB	*/
+#define AL_ATAR 32024	/* File tarature TARCNC.TAB alterato		*/
+			/* File cancellato o alterato			*/
+
+#define	AL_AX0 8049	/* inzcnc : 				*/
+			/* Numero di assi definiti superiore al */
+			/* massimo consentito		      	*/
+#define	AL_AX1 8050	/* inzcnc : 				*/
+		   	/* File di taratura errato 		*/
+			/* Numero d'ordine dell'asse nel campo	*/
+			/* ORD=  incoerente rispetto al prec.nte*/
+#define	AL_AX2 8051	/* inzcnc : 				*/
+		   	/* ACCN/Risol/Coef_int			*/
+			/* Il valore numerico trasformato in ud */
+			/* per SA da overflow: maggiore di 32767.*/
+			/* Se non Š possibile ridurre il valore in*/
+			/* taratura, agire sul Coef_int(CINT):	*/
+			/* il calcolo viene fatto sulla base della*/
+			/* disequazione: 			*/
+			/* (ACCN*TAU*TAU)/60)*(CINT/Ris)<32768	*/
+ 			/* Per assi tondi il primo membro viene	*/
+			/* moltiplicato per 360	    	      	*/
+#define	AL_AX3 8052	/* inzcnc : 				*/
+		   	/* Libero				*/
+#define	AL_AX4 8053	/* inzcnc : 				*/
+		   	/* Libero   				*/
+#define	AL_AX5 8054	/* inzcnc : 				*/
+		   	/* Libero   				*/
+#define	AL_AX6 8055	/* inzcnc : 				*/
+		   	/* File di taratura errato	  	*/
+			/* Nome dell' asse NON compreso fra i 	*/
+			/* caratteri consentiti		       	*/
+#define	AL_AX7 8056	/* inzcnc : 				*/
+		   	/* File di taratura errato 		*/
+			/* Nome asse gi… usato per altri assi,o*/
+			/* sigla gi… usata in altri file di tarat.*/
+#define	AL_AX8 8057	/* inzcnc : 				*/
+		   	/* File di taratura errato 		*/
+			/* Il campo puo' essere definito solo con */
+			/* una delle segu.ti stringhe triletterali:*/
+			/* "ABS"  "INC"	 "ABT"  "INT"	     	*/
+#define	AL_AX9 8058	/* inzcnc : 				*/
+		   	/* File di taratura errato 		*/
+			/* Dopo il carattere ";" , Š accettato */
+			/* solo il carattere "Y" oppure "N"	*/
+#define	AL_AX10 8059	/* inzcnc : 				*/
+		   	/* File di taratura errato     		*/
+			/* Il campo numerico NON deve contenere il*/
+			/* segno ( carattere + oppure - )     	*/
+#define	AL_AX11 8060	/* inzcnc : 				*/
+		   	/* File di taratura errato		*/
+			/* Numero piu' piccolo del minimo cons.to*/
+#define	AL_AX12 8061	/* inzcnc : 				*/
+		   	/* VRAP/Ris/Coef_int			*/
+			/* Il valore numerico trasformato in ud */
+			/* per SA da overflow: maggiore di 32767.*/
+			/* Se non Š possibile ridurre il valore in*/
+			/* taratura, agire sul Coef_int(CINT):	*/
+			/* il calcolo viene fatto sulla base della*/
+			/* disequazione: 			*/
+			/* (VRAP*TAU)/60)*(CINT/Risol) < 32768 	*/ 
+ 			/* Per assi tondi il primo membro viene	*/
+			/* moltiplicato per 360	    	       	*/
+#define	AL_AX13 8062	/* inzcnc : 				*/
+		   	/* File di taratura errato	  	*/
+			/* Asse mandrino gi… definito 		*/
+#define	AL_AX14 8063	/* inzcnc : 				*/
+		   	/* File di taratura errato 		*/
+			/* L' asse mandrino deve essere 	*/
+			/* definito asse NON LINEARE		*/
+#define	AL_AX15 8064	/* inzcnc : 				*/
+		   	/* File di taratura errato		*/
+			/* Le tarature possibili per asse mandrino*/
+			/* sono :			     	*/
+			/* AMN=Y   oppure    AMN=Y;a;b	     	*/
+			/* a puo' essere il carattere P oppure N*/
+			/* b  "      "    "     "     M   "    S*/
+			/* Devono essere definiti entrambi i par.*/
+			/* "a" e "b" separati dal carattere ";" o*/
+			/* nessuno dei due			*/
+#define	AL_AX16 8065	/* inzcnc : 				*/
+		   	/* File di taratura errato		*/
+			/* Il valore numerico trasformato in ud */
+			/* per SA Š minore di 1 ud (mandrino 2 )*/
+			/* Se non Š possibile aumentare il valore*/
+			/* in taratura, agire sul campo "Coef_int"*/
+#define	AL_AX17 8066	/* inzcnc : 				*/
+		   	/* File di taratura errato		*/
+			/* Numero piu' grande del massimo cons.to*/
+#define	AL_AX18 8067	/* inzcnc : 				*/
+		   	/* File di taratura errato   		*/
+			/* Manca il carattere ";"  		*/
+			/* I parametri opzionali devono essere o*/
+			/* tutti definiti o nessuno 		*/
+#define	AL_AX19 8068	/* inzcnc : 				*/
+			/* Il parametro K1 da inviare alla SA	*/
+			/* trasf. in ud al TAU da overflow(>32767)*/
+			/* K1 Š derivato dalla formula (>0):	*/
+			/* 8386560/				*/
+			/* (vrap*TAU/60)*(kpt/rsm)*(1+mrg/100)	*/
+			/* Per ottenere un val.e corr.to agire	*/
+			/* su uno dei parametri(es.:aumentare KPT)*/
+#define	AL_AX20 8069	/* inzcnc : TARAXS		      	*/
+		   	/* File di taratura errato	      	*/
+			/* Il parametro da inviare alla SA Š 	*/
+			/* minore di 1 ud			*/
+#define	AL_AX21 8070	/* inzcnc : 				*/
+			/* Il valore numerico trasformato in ud */
+			/* per SA da overflow:maggiore di 32767.*/
+#define	AL_AX22 8071	/* inzcnc : 				*/
+			/* Il campo puo' essere definito solo con */
+			/* una delle stringhe : "CW"  "CCW"	*/
+#define	AL_AX23 8072	/* inzcnc : 				*/
+			/* Il campo puo' essere definito solo con*/
+			/* caratteri "D" oppure "C"	      	*/
+#define	AL_AX24 8073	/* inzcnc : 				*/
+			/* Assi con compensazione errore (input */
+			/* errore da esterno (PLC)) oltre il max*/
+#define	AL_AX25 8074	/* inzcnc : 			      	*/
+			/* Il campo deve esse definito	 	*/
+#define	AL_AX26 8075	/* inzcnc : 				*/
+			/* Valore fine corsa negativo errato	*/
+			/* Deve essere minore del valore di 	*/
+			/* fine corsa positivo			*/
+#define	AL_AX31	8104	/* inzcnc : 				*/
+			/* Il campo deve essere definito con A o I*/
+			/* per indicare senso moto Avanti/Indietro*/
+#define	AL_AX32	8105	/* inzcnc"			*/
+	      		/* Giro asse per asse tondo deve essere<=0*/
+#define	AL_GEN8 8008	/* inzcnc : 				*/
+			/* File di taratura errato 		*/
+			/* Il campo puo' essere definito solo	*/
+			/* con caratteri "Y" od "N"		*/
+#define	AL_GEN12 8012	/* inzcnc : 				*/
+			/* File di taratura errato		*/
+			/* Campo numerico errato  		*/
+#define	AL_GEN13 8013	/* inzcnc : 				*/
+			/* File di taratura errato		*/
+			/* Numero fuori range		 	*/
+
+#define AL_ERSU	32008	/* Nuovo valore origine non acquisito		*/
+
+#define AL_ETAR 32023	/* Errore in lettura del file TARCNC.TAB	*/
+#define AL_ATAR 32024	/* File tarature TARCNC.TAB alterato		*/
+			/* File cancellato o alterato						*/
+#define AL_EDRZ 32025	/* Numero terna ISO errato 		*/
+/* I numeri possibili della terna sono :1-2-3			*/
+/* Gli assi di ordine 0,1,2 hanno dir. 1,2 o 3		*/ 
+#define AL_EKPT 32026	/* Coefficiente interno errato		*/
+/* I valori possibili sono comprese tra 0.01 e 1  		*/
+#define AL_ETARW 32027	/* Errore in scrittura del file TARCNC.TAB	*/
+/* Aggiornamento  parametri non effettuato			*/
+#define AL_ERAC1 32028	/* Se ACCS diverso da 0 anche SVGA deve */
+/* essere diverso da zero 						*/
+#define AL_ESE 32029	/* Non Š possibile l'attivazione con il CNC	*/
+/* in esecuzione di un comando o part program				*/
+#define AL_EKAC	32030	/* Se ACCS diverso da 0 anche SVCA deve	*/
+/* essere diverso da zero 						*/
+#define AL_EAGG	32031	/* Errore di memoria: probabile 		*/
+/* memoria insufficiente						*/
+#define AL_TONDO  32032 /* Con asse mandrino occorre definire 	*/
+/* l` asse NON lineare */
+#define AL_GIROAS  32033 /* Con asse mandrino occorre definire il */
+/* par. "giro asse" ( MISURA ) */
+
+
+
+#define	AL_QMIN0 8031	/* inzcnc : 				*/
+			/* Il valore della Soglia di Velocit…	*/
+			/* mandrino o della soglia minima devono*/
+			/* essere maggiori di zero		*/
+#define	AL_VEL1 8032	/* inzcnc : 				*/
+			/* Il parametro SVCA se definito deve 	*/
+			/* essere minore o uguale di VRAP	*/
+#define	AL_ACC1 8033	/* inzcnc :   				*/
+			/* Il parametro ACCS se definito deve 	*/
+			/* essere  maggiore di zero 		*/
+#define	AL_NOMIN0 8034	/* inzcnc : 				*/
+			/* I parametri:VRAP,ACCN,Risol,Soglia non */
+			/* possono essere minori o uguali a zero*/
+#define	AL_NOMRKV 8035	/* inzcnc :   				*/
+			/* I parametri: Regolaz. di VRAP e KV	*/
+			/* non possono essere  minori di  zero	*/
+#define	AL_NONIP 8036	/* inzcnc :  				*/
+			/* Con asse definito non lineare il valore */
+			/* "giro asse" deve essere maggiore di zero*/
+
+#define	AL_FC 8037	/* inzcnc : TARAXS  				*/
+			/* Il fine corsa positivo deve essere   */
+			/* maggiore di quello negativo 				*/
+
+
+#define	AL_DIMKPT 8107	/* Velocit… in [ud/tau] troppo elevata:	*/
+			/* porre coefficiente interno al valore minimo (1) */
+
+#define	AL_AUMKPT 8108	/* Accelerazione in [ud/tau*tau] nulla: aumentare */
+			/* il coefficiente interno			*/
+
+
+
+#define	AT_SAVTAR  32120 /* [ENTER]=prosegue [ESC]=abort */
+/* ATTENZIONE! vengono modificate le  */ 
+/* tarature del CNC con conseguente */
+/* "spengimento/accensione" del CNC stesso*/
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                 (?ô²ˆ0{àŠ*¯í&@¤ ”¡ ² U$á!è Ô& 5 ˆ¿õ° Ñ>8@"å¨ùÓ´f§Y!¾á œ „@ã Ò)€P3‹B8Gpï±=à bQ4°I@W¿`20 €< è €9Ği0„@L¯ÁşğKb€LŒD7à-€TÖ ¾Ì z€€ 00¼¡¯Ò°ŸÂQ‹pHÿÂ‹ã“#>1E‘ĞŸ9ê ‘)fó„ tZŒ<<ÈÂû€ypfâbFnœ8€ûßTM =Ù¡©€ª `MŞüb°¹1d¸°1:Oü7pµ 
+q¯Æl?ü	¿úV †_Dù#xˆA¹ĞğÄ[¸ ±§§aş®8×e%C¯)WqÜÄhsàÆ 1´ÉÌüòµLP3``ÿüA‡	×#`` /şšMM€  *¬|ÕªŒ ÁbG|O€íŸu›ÿãÜ€Ô&ÀX Û›`*Tä¨ÿş©ÿÀ€¶ )`D @3Œ  cÿú€`ˆ@·cÈ€2TàÃÿüP ˆÃÿàÆ ¢‰Ô
+€ 0¨‹Æ øP˜*0 TÿâB@ˆ¿ø<:A) ´hy“€"Ä|àÔg ÈğQ0› ĞŒ2~‘øŸPx„è sÀ²„‚P‚h@,ßü¨G‰ÄxşP  &€-x Ô;×CŠø É0€Ñ¡ÀbHô‚Oş‚oşXĞoş¢«ïÿ¨
+ 72 Ø¸P- €Eƒ²OÈ†làš=FQ>Å¸‹ÿàF¾	Ÿú_À¤†T¯ÿ—ÿÚ@SíÁ$	€š st¿ûßüõ º@ÁA€"¥ˆıé¨À…ˆ ´İ#ÿÏ(X-íB@ÇÿğÀg”-8IøŸOşğIÿÒÈ5	 ºßÿ–ßø0*	¿ù,İñ:¡"*¬@X ¤¾´“R 3–²BĞQ1 Ùÿğ˜Šù€x¡¨ %°(€ ÍP±ë B£Å€ël`& Ò vQcÍnÉçàø ;ä°ŞPÒY/$c°TğÉˆ¥”|ì43“ØMpZ„Ás2FÎÀÿ =õÉNQ#(P Õˆ²–º´ön…Á-€h"À{Ú|	o9ÂZàc áˆdUwâº¹!AÒ.™á°*nÌ•/Ü±ƒÂÌi 'á  ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÀ      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÀ      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÀ      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÀ      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßñÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßñÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßñÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßñÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßîÿßÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßîÿßÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßîÿßÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßîÿßÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßÛÎxø;ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßÛÎxø;ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßÛÎxø;ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßÛÎxø;ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿĞ #tó»ÏÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿĞ #tó»ÏÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿĞ #tó»ÏÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿĞ #tó»ÏÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßÛ~Ï!ôç»ŸÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßÛ~Ï!ôç»ŸÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßÛ~Ï!ôç»ŸÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßÛ~Ï!ôç»Ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßîşß00çÛŸÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßîşß00çÛŸÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßîşß00çÛŸÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßîşß00çÛŸÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßñşÿ.,gû Ãÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßñşÿ.,gû Ãÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßñşÿ.,gû Ãÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßñşÿ.,gû Ãÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßûşÿ..sÛ†Oÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßûşÿ..sÛ†Oÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßûşÿ..sÛ†Oÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßûşÿ..sÛ†Oÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßûşş Ì8;†Oÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßûşş Ì8;†Oÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßûşş Ì8;†Oÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßûşş Ì8;†Oÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßø ÿÿÿÿû†Oÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßø ÿÿÿÿû†Oÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßø ÿÿÿÿû†Oÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿßø ÿÿÿÿû†OÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÀ      ÏÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÀ      ÏÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÀ      ÏÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÀ      Ïÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿş           ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿş           ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿş           ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿş           ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿáÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿáÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿáÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿáÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿŸ?ÿÿÿùŸÿÿÿçÏÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿŸ?ÿÿÿùŸÿÿÿçÏÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿŸ?ÿÿÿùŸÿÿÿçÏÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿŸ?ÿÿÿùŸÿÿÿçÏÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿş?ÿÿÿùÿÿÿÿçÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿş?ÿÿÿùÿÿÿÿçÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿş?ÿÿÿùÿÿÿÿçÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿş?ÿÿÿùÿÿÿÿçÿ~ÿüÿşà>?şÿÿóÿÿ¿ÿ?ÿŸÿÿÿıÿC‡`È~ÿüÿşà>?şÿÿóÿÿ¿ÿ?ÿŸÿÿÿıÿC‡`È~ÿüÿşà>?şÿÿóÿÿ¿ÿ?ÿŸÿÿÿıÿC‡`È~ÿüÿşà>?şÿÿóÿÿ¿ÿ?ÿŸÿÿÿıÿC‡`È|ÿüÿÿ?ó??ÿ?ÿÿçÿÿ?ÿ?ÿÏÿÿÿıÿ0È˜dÉL2Ë&I|ÿüÿÿ?ó??ÿ?ÿÿçÿÿ?ÿ?ÿÏÿÿÿıÿ0È˜dÉL2Ë&I|ÿüÿÿ?ó??ÿ?ÿÿçÿÿ?ÿ?ÿÏÿÿÿıÿ0È˜dÉL2Ë&I|ÿüÿÿ?ó??ÿ?ÿÿçÿÿ?ÿ?ÿÏÿÿÿıÿ0È˜dÉL2Ë&IyÿÿÿÿŸó¿?ÿ?ÿÿÏÿşÿÿÿçÿÿÿıÿ3‰ÄÉLàóæIyÿÿÿÿŸó¿?ÿ?ÿÿÏÿşÿÿÿçÿÿÿıÿ3‰ÄÉLàóæIyÿÿÿÿŸó¿?ÿ?ÿÿÏÿşÿÿÿçÿÿÿıÿ3‰ÄÉLàóæIyÿÿÿÿŸó¿?ÿ?ÿÿÏÿşÿÿÿçÿÿÿıÿ3‰ÄÉLàóæIsŒøò?Ÿòü?ÿ>GƒÏŒüã><çÿÿÿıÿ2	ÃÉL€óæIsŒøò?Ÿòü?ÿ>GƒÏŒüã><çÿÿÿıÿ2	ÃÉL€óæIsŒøò?Ÿòü?ÿ>GƒÏŒüã><çÿÿÿıÿ2	ÃÉL€óæIsŒøò?Ÿòü?ÿ>GƒÏŒüã><çÿÿÿıÿ2	ÃÉL€óæIg€|ùŸŸğù?ÿ?39Ï€yà>gçÿÿÿş0ÉğdÉL0óæIg€|ùŸŸğù?ÿ?39Ï€yà>gçÿÿÿş0ÉğdÉL0óæIg€|ùŸŸğù?ÿ?39Ï€yà>gçÿÿÿş0ÉğdÉL0óæIg€|ùŸŸğù?ÿ?39Ï€yà>gçÿÿÿş0ÉğdÉL0óæIO’|ùŸŸòó?ÿ?3?Ï’säŸ>gçÿÿÿÿŸ4É˜dÉL0Ã&IO’|ùŸŸòó?ÿ?3?Ï’säŸ>gçÿÿÿÿŸ4É˜dÉL0Ã&IO’|ùŸŸòó?ÿ?3?Ï’säŸ>gçÿÿÿÿŸ4É˜dÉL0Ã&IO’|ùŸŸòó?ÿ?3?Ï’säŸ>gçÿÿÿÿŸ4É˜dÉL0Ã&I’|ùŸŸóó?ÿ?3?Ï’gäŸ>gçÿÿÿÿá	ÃÈL‚fI’|ùŸŸóó?ÿ?3?Ï’gäŸ>gçÿÿÿÿá	ÃÈL‚fI’|ùŸŸóó?ÿ?3?Ï’gäŸ>gçÿÿÿÿá	ÃÈL‚fI’|ùŸŸóó?ÿ?3?Ï’gäŸ>gçÿÿÿÿá	ÃÈL‚fI?’|ùŸ?óó>?39ç’oäŸ>gÏÿÿÿÿş           ?’|ùŸ?óó>?39ç’oäŸ>gÏÿÿÿÿş           ?’|ùŸ?óó>?39ç’oäŸ>gÏÿÿÿÿş           ?’|ùŸ?óó>?39ç’oäŸ>gÏÿÿÿÿş           ’xyáø~3ƒó’ägŸÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ’xyáø~3ƒó’ägŸÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ’xyáø~3ƒó’ägŸÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ’xyáø~3ƒó’ägŸÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿø            †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿø            †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿø            †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ8 †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ8 †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ8 †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ8 †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ8 üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ8 üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ8 üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ8 üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  üÃÿ   ø  üáÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  üÃÿ   ø  üáÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  üÃÿ   ø  üáÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  üÃÿ   ø  üáÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  †cÿ     †1ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  †cÿ     †1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  †cÿ     †1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  †cÿ     †1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿ    †1ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ †cÿ    †1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿ    †1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿ    †1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ †cÿ    †1ÿÿÿÿÿÿÿÿÿÿç?ÿÿÿÿÿ ÿıÿ †cÿ    †1ÿÿÿÿÿÿÿÿÿûç?ÿÿÿÿÿ ÿıÿ †cÿ    †1ÿÿÿÿÿÿÿÿÿûç?ÿÿÿÿÿ ÿıÿ †cÿ    †1ÿÿÿÿÿÿÿÿÿûç?ÿÿÿÿÿ ÿıÿ †cÿ    † 1ÿÿÿÿÿÿÿÿÿÿç?ÿÿÿÿÿ$ÿùÿ †cÿ    † 1ÿÿÿÿÿÿÿÿÿûç?ÿÿÿÿÿ$ÿùÿ †cÿ    † 1ÿÿÿÿÿÿÿÿÿûç?ÿÿÿÿÿ$ÿùÿ †cÿ    † 1ÿÿÿÿÿÿÿÿÿûç?ÿÿÿÿÿ$ÿùÿ †cÿ    † Áÿÿÿÿÿÿÿÿÿÿç?ÿÿÿÿÿfÿùÿ †cÿ    † Áÿÿÿÿÿÿÿÿÿûç?ÿÿÿÿÿfÿùÿ †cÿ    † Áÿÿÿÿÿÿÿÿÿûç?ÿÿÿÿÿfÿùÿ †cÿ    † Áÿÿÿÿÿÿÿÿÿûç?ÿÿÿÿÿfÿùÿ †ãÿ    †ÿÿÿÿÿÿÿÿÿÿç89œÿçàà †ãÿ    †ÿÿÿÿÿÿÿÿÿûç89œÿçàà †ãÿ    †ÿÿÿÿÿÿÿÿÿûç89œÿçàà †ãÿ    †ÿÿÿÿÿÿÿÿÿûç89œÿçàà †cÿ    †ÿÿÿÿÿÿÿÿÿÿà3™&sÿçÎyÿ †cÿ    †ÿÿÿÿÿÿÿÿÿûà3™&sÿçÎyÿ †cÿ    †ÿÿÿÿÿÿÿÿÿûà3™&sÿçÎyÿ †cÿ    †ÿÿÿÿÿÿÿÿÿûà3™&sÿçÎyÿ †cÿ    †ÿÿÿÿÿÿÿÿÿÿç3™gÿçÎyÿ †cÿ    †ÿÿÿÿÿÿÿÿÿûç3™gÿçÎyÿ †cÿ    †ÿÿÿÿÿÿÿÿÿûç3™gÿçÎyÿ †cÿ    †ÿÿÿÿÿÿÿÿÿûç3™gÿçÎyÿ †cÿ    †ÿÿÿÿÿÿÿÿÿÿç3™ÇÿçÎyÿ †cÿ    †ÿÿÿÿÿÿÿÿÿûç3™ÇÿçÎyÿ †cÿ    †ÿÿÿÿÿÿÿÿÿûç3™ÇÿçÎyÿ †cÿ    †ÿÿÿÿÿÿÿÿÿûç3™ÇÿçÎyÿ8 †Ãÿ    †ñÿÿÿÿÿÿÿÿÿÿç3™~sÿçÎy<8 †Ãÿ    †ñÿÿÿÿÿÿÿÿÿûç3™~sÿçÎy<8 †Ãÿ    †ñÿÿÿÿÿÿÿÿÿûç3™~sÿçÎy<8 †Ãÿ    †ñÿÿÿÿÿÿÿÿÿûç3™~sÿçÎy<8 üƒÿ   ø ü	ñÿÿÿÿÿÿÿÿÿÿç8<L?ÿÃàü|8 üƒÿ   ø ü	ñÿÿÿÿÿÿÿÿÿûç8<L?ÿÃàü|8 üƒÿ   ø ü	ñÿÿÿÿÿÿÿÿÿûç8<L?ÿÃàü|8 üƒÿ   ø ü	ñÿÿÿÿÿÿÿÿÿûç8<L?ÿÃàü|    ÿ         ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿƒà`øÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûƒà`øÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûƒà`øÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûƒà`øÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ†0áŒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†0áŒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†0áŒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†0áŒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ†1áŒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†1áŒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†1áŒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†1áŒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ†0aŒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†0aŒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†0aŒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†0aŒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿƒà`üÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûƒà`üÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûƒà`üÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûƒà`üÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ†0`ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†0`ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†0`ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†0`ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ†0`ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†0`ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†0`ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†0`ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ†0`ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†0`ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†0`ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†0`ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÇãáøğÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÇãáøğÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÇãáøğÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÇãáøğÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû      ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿıüÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûıüÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûıüÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûıüÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿøşÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûøşÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûøşÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûøşÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿò~ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûò~ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûò~ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûò~ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿç>|<Œgƒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûç>|<Œgƒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûç>|<Œgƒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûç>|<Œgƒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿç>$9ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûç>$9ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûç>$9ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûç>$9ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿà>|d“ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûà>|d“ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûà>|d“ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûà>|d“ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿç>y|“ãÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûç>y|“ãÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûç>y|“ãÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûç>y|“ãÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿç>y|“9ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûç>y|“9ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûç>y|“9ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûç>y|“9ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿç<<L<“ƒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûç<<L<“ƒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûç<<L<“ƒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûç<<L<“ƒÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû            üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ            üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû            üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû            üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû            †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ            †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû            †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû            †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû           †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ           †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû           †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû           †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû           †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ€ ø|‡ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû€ ø|‡ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû€ ø|‡ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû€ ø|‡ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ ŒÆcÇ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû ŒÆcÇ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû ŒÆcÇ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû ŒÆcÇ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ†  0Ç †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†  0Ç †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†  0Ç †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû†  0Ç †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÆ  0Ç †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÆ  0Ç †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÆ  0Ç †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÆ  0Ç †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÆøx?‡ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÆøx?‡ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÆøx?‡ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÆøx?‡ †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÆ  01˜Ç †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÆ  01˜Ç †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÆ  01˜Ç †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÆ  01˜Ç †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÆ# `1˜Ç †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÆ# `1˜Ç †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÆ# `1˜Ç †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÆ# `1˜Ç8 †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÆc0ŒÆ1˜Ç8 †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÆc0ŒÆ1˜Ç8 †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÆc0ŒÆ1˜Ç8 †cÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÆc0ŒÆ1˜Ç8 üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÏçğ øş‡8 üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÏçğ øş‡8 üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÏçğ øş‡8 üÃÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÏçğ øş‡    ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû              ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿû          ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ    ÿ         ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  Ãÿ   ø  üáÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  Ãÿ   ø  üáÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  Ãÿ   ø  üáÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  Ãÿ   ø  üáÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  cÿ     †1ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  cÿ     †1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  cÿ     †1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  cÿ     †1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  cÿ    †1ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  cÿ    †1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  cÿ    †1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  cÿ    †1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  8cÿ    †1ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  8cÿ    †1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  8cÿ    †1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  8cÿ    †1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  X Ãÿ    † 1ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  X Ãÿ    † 1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  X Ãÿ    † 1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  X Ãÿ    † 1ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  ˜Ãÿ    † Áÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  ˜Ãÿ    † Áÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  ˜Ãÿ    † Áÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  ˜Ãÿ    † Áÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  ˜ cÿ    †ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  ˜ cÿ    †ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  ˜ cÿ    †ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  ˜ cÿ    †ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  cÿ    †ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  cÿ    †ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  cÿ    †ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  cÿ    †ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ ÿcÿ    †ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ ÿcÿ    †ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ ÿcÿ    †ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ ÿcÿ    †ÿÿÿÿÿÿÿÿÿûÿÿÿÿÿÿÿÿÿÿÿ  cÿ    †ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ  cÿ    †ÿÿÿÿÿÿÿÿÿø             cÿ    †ÿÿÿÿÿÿÿÿÿø             cÿ    †ÿÿÿÿÿÿÿÿÿø       
